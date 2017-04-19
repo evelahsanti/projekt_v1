@@ -8,6 +8,7 @@ var self = Page.create({
 
     stdDietLink: {
         get: function () {
+            // return element(self.by.xpath('//*[@id="ct-js-wrapper"]/section[1]/div/div/div/ul/li[2]/a'));
             return element(self.by.xpath('.//*[contains(@data-hover, "Dieta Standardowa")]'));
         }
     },

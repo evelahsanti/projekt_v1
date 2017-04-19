@@ -1,6 +1,6 @@
-Feature: Test 1
+Feature: Ordering diet
 
-  Scenario: Add new book
+  Scenario: Order standard diet
     Given I am on Order Diet page
     When I select Standard Diet
     And I fill the form

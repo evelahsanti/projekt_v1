@@ -38,7 +38,7 @@ module.exports = function(grunt) {
                 seleniumDownloadURL: 'http://selenium-release.storage.googleapis.com',
                 drivers: {
                     chrome: {
-                        version: '2.21',
+                        version: '2.9',
                         baseURL: 'http://chromedriver.storage.googleapis.com'
                     },
                     ie: {

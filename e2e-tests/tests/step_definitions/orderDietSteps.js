@@ -16,9 +16,6 @@ var addBookSteps = function () {
             .then(function () {
                 return mainPage.goToOrderDietPage();
             })
-            //.then(function () {
-            //    return browser.pause();
-            //})
             .then(callback);
     });
 
