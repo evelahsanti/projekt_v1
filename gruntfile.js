@@ -3,24 +3,6 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        jshint: {
-            all: [
-                'Gruntfile.js',
-                'assets/js'
-            ],
-            options: {
-                jshintrc: '.jshintrc'
-            }
-        },
-        connect: {
-            server: {
-                options: {
-                    port: 9001,
-                    base: 'app',
-                    keepalive: true
-                }
-            }
-        },
         protractor: {
             cucumber: {
                 options : {
@@ -38,7 +20,7 @@ module.exports = function(grunt) {
                 seleniumDownloadURL: 'http://selenium-release.storage.googleapis.com',
                 drivers: {
                     chrome: {
-                        version: '2.9',
+                        version: '2.21',
                         baseURL: 'http://chromedriver.storage.googleapis.com'
                     },
                     ie: {
@@ -52,15 +34,8 @@ module.exports = function(grunt) {
     });
 
     // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-protractor-runner');
     grunt.loadNpmTasks('grunt-selenium-standalone');
-
-
-    grunt.registerTask(
-        'serve', ['jshint','connect']
-    );
 
     grunt.registerTask(
         'e2e', ['selenium_standalone:e2e:install', 'selenium_standalone:e2e:start', 'protractor']

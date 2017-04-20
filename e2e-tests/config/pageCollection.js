@@ -1,12 +1,15 @@
 var pageCollection = (function () {
 
     var mainPage = require('../tests/page/mainPage'),
-        orderDiet = require('../tests/page/orderDiet');
+        orderDiet = require('../tests/page/orderDiet'),
+        stdDietForm = require('../tests/page/standardDietForm');
+
 
 
     return {
         mainPage: mainPage,
-        orderDiet: orderDiet
+        orderDiet: orderDiet,
+        stdDietForm: stdDietForm
     };
 
 }());
