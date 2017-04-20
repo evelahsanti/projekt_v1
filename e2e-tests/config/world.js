@@ -5,14 +5,12 @@ var world = (function() {
 
     var expect = chai.expect,
         EC = protractor.ExpectedConditions,
-        config = require('./protractor.cucumber.conf.js'),
-        basicSupport = require('../tests/support/basicSupport');
+        config = require('./protractor.cucumber.conf.js');
 
     return {
         expect: expect,
         EC: EC,
-        config: config,
-        basicSupport: basicSupport
+        config: config
     }
 
 }());

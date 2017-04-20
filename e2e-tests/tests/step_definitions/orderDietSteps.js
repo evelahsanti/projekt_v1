@@ -5,7 +5,8 @@ const world = require('../../config/world.js'),
 
 var addBookSteps = function () {
     var orderDiet = pages.orderDiet,
-        mainPage = pages.mainPage;
+        mainPage = pages.mainPage,
+        stdDietForm = pages.stdDietForm;
 
     this.Given(/^I am on Order Diet page$/, function (callback) {
         browser.ignoreSynchronization = true;
@@ -25,7 +26,8 @@ var addBookSteps = function () {
     });
 
     this.When(/^I fill the form$/, function (callback) {
-        callback();
+        stdDietForm.setSetsAmount(2)
+            .then(callback);
     });
 
     this.When(/^I add diet to the basket$/, function (callback) {
