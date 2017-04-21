@@ -26,8 +26,8 @@ var self = Page.create({
         }
     },
     caloriesAmountValue: {
-        value: function (value) {
-            return self.caloriesAmountPicker.element(self.by.cssContainingText('option', value));
+        value: function (setNumber, value) {
+            return self.caloriesAmountPicker(setNumber).element(self.by.cssContainingText('option', value));
         }
     },
     setSetsAmount: {
@@ -42,12 +42,8 @@ var self = Page.create({
         value: function (setNumber, calories) {
             return self.caloriesAmountPicker(setNumber).click()
                 .then(function () {
-                    self.caloriesAmountValue(calories).click();
+                    self.caloriesAmountValue(setNumber, calories).click();
                 });
-            //self.caloriesAmountPicker(setNumber)
-            //    .then(function (amount) {
-            //        console.log(amount, calories);
-            //    });
         }
     }
 
