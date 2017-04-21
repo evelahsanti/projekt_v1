@@ -25,8 +25,21 @@ var addBookSteps = function () {
             .then(callback)
     });
 
-    this.When(/^I fill the form$/, function (callback) {
-        stdDietForm.setSetsAmount(2)
+    this.When(/^I fill the form for (.*) sets with data:$/, function (setsAmount, data, callback) {
+        var table = data.hashes(),
+            i;
+
+        stdDietForm.setSetsAmount(setsAmount)
+            .then(function () {
+                browser.sleep(5000);
+                for(i = 1; i < setsAmount; i++) {
+                    stdDietForm.setCaloriesForSet(i, table[i-1].caloriesAmount);
+                }
+
+            })
+            //.then(function () {
+            //    return browser.pause();
+            //})
             .then(callback);
     });
 
