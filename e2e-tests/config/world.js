@@ -3,6 +3,9 @@ var world = (function() {
     chaiAsPromised = require("chai-as-promised");
     chai.use(chaiAsPromised);
 
+    const WIDTH = 1024,
+          HEIGHT = 800;
+
     var expect = chai.expect,
         EC = protractor.ExpectedConditions,
         config = require('./protractor.cucumber.conf.js');
@@ -10,7 +13,9 @@ var world = (function() {
     return {
         expect: expect,
         EC: EC,
-        config: config
+        config: config,
+        WIDTH: WIDTH,
+        HEIGHT: HEIGHT
     }
 
 }());

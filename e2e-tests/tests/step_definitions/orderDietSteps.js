@@ -8,18 +8,17 @@ var addBookSteps = function () {
         mainPage = pages.mainPage,
         stdDietForm = pages.stdDietForm;
 
-    this.Given(/^I am on Order Diet page$/, function (callback) {
+    this.Given(/^I am on main page$/, function (callback) {
         browser.ignoreSynchronization = true;
-        var width = 1024;
-        var height = 800;
         browser.get(world.config.config.baseUrl)
             .then(function () {
-                //browser.driver.manage().window().maximize();
-                browser.driver.manage().window().setSize(width, height);
+                browser.driver.manage().window().setSize(world.WIDTH, world.HEIGHT);
             })
-            .then(function () {
-                return mainPage.goToOrderDietPage();
-            })
+            .then(callback);
+    });
+
+    this.Given(/^I go to Order Diet page$/, function (callback) {
+        mainPage.goToOrderDietPage()
             .then(callback);
     });
 
@@ -37,12 +36,17 @@ var addBookSteps = function () {
                 browser.sleep(1000);
                 for(i = 1; i <= setsAmount; i++) {
                     stdDietForm.setCaloriesForSet(i, table[i-1].caloriesAmount);
+                    stdDietForm.setDurationForSet(i, table[i-1].duration);
+                    stdDietForm.setDeliverDayForSet(i-1, table[i-1].date);
                 }
 
             })
-            //.then(function () {
-            //    return browser.pause();
-            //})
+            .then(function () {
+                return browser.pause();
+            })
+            .then(function () {
+                return browser.pause();
+            })
             .then(callback);
     });
 

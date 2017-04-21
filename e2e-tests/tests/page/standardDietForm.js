@@ -30,11 +30,38 @@ var self = Page.create({
             return self.caloriesAmountPicker(setNumber).element(self.by.cssContainingText('option', value));
         }
     },
+    durationPicker: {
+        value: function (setNumber) {
+            return self.formContainer.all(self.by.id('okres-diety')).get(setNumber);
+        }
+    },
+    durationValue: {
+        value: function (setNumber, value) {
+            return self.durationPicker(setNumber).element(self.by.cssContainingText('option', value));
+        }
+    },
+    datesPicker: {
+        value: function (setNumber) {
+            return self.formContainer.all(self.by.className('calendar_button_cont')).get(setNumber);
+        }
+    },
+    datesContainer: {
+        value: function (setNumber) {
+            //return self.formContainer.all(self.by.className('ui-datepicker-group ui-datepicker-group-last')).get(setNumber);
+            return element(self.by.className('ui-datepicker-group ui-datepicker-group-last'));
+        }
+    },
+    datesValue: {
+        value: function (setNumber, value) {
+            return self.datesContainer(setNumber).element(self.by.cssContainingText('span', value));
+        }
+    },
+
     setSetsAmount: {
         value: function (amountToSet) {
             return self.setsAmountPicker.click()
                 .then(function () {
-                    self.setsAmountValue(amountToSet).click();
+                    return self.setsAmountValue(amountToSet).click();
                 });
         }
     },
@@ -42,10 +69,25 @@ var self = Page.create({
         value: function (setNumber, calories) {
             return self.caloriesAmountPicker(setNumber).click()
                 .then(function () {
-                    self.caloriesAmountValue(setNumber, calories).click();
+                    return self.caloriesAmountValue(setNumber, calories).click();
+                });
+        }
+    },
+    setDurationForSet: {
+        value: function (setNumber, duration) {
+            return self.durationPicker(setNumber).click()
+                .then(function () {
+                    return self.durationValue(setNumber, duration).click();
+                });
+        }
+    },
+    setDeliverDayForSet: {
+        value: function (setNumber, day) {
+            return self.datesPicker(setNumber).click()
+                .then(function () {
+                    return self.datesValue(setNumber, day).click();
                 });
         }
     }
-
 });
 module.exports = self;

@@ -1,7 +1,8 @@
 Feature: Ordering diet
 
   Scenario: Order standard diet
-    Given I am on Order Diet page
+    Given I am on main page
+    And I go to Order Diet page
     When I select Standard Diet
     And I fill the form for 2 sets with data:
       |caloriesAmount|duration|date|
