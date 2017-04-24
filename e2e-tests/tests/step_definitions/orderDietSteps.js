@@ -37,7 +37,7 @@ var addBookSteps = function () {
                 for(i = 1; i <= setsAmount; i++) {
                     stdDietForm.setCaloriesForSet(i, table[i-1].caloriesAmount);
                     stdDietForm.setDurationForSet(i, table[i-1].duration);
-                    stdDietForm.setDeliverDayForSet(i-1, table[i-1].date);
+                    stdDietForm.setDeliverDayForSet(i, table[i-1].date);
                 }
 
             })
